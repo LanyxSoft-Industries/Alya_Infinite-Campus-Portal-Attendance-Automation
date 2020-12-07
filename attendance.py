@@ -44,7 +44,8 @@ options = Options()
 options.headless = True
 
 profile = webdriver.FirefoxProfile()
-profile.set_preference("general.useragent.override", CUSTOM_USER_AGENT)
+if CUSTOM_USER_AGENT is not "":
+    profile.set_preference("general.useragent.override", CUSTOM_USER_AGENT)
 binary = FirefoxBinary('/usr/lib/firefox/firefox')
 driver = webdriver.Firefox(profile, options=options, firefox_binary=binary)
 driver.maximize_window()
